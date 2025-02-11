@@ -1,0 +1,18 @@
+<h2>User details</h2>
+<dl>
+  <dt>First name</dt>
+  <dd>{{user?.firstName}}</dd>
+  <dt>Last name</dt>
+  <dd>{{user?.lastName}}</dd>
+  <dt>Email address</dt>
+  <dd>{{user?.email}}</dd>
+</dl>
+<form (submit)="editUser()">
+  <label for="firstName">First name</label>
+  <input id="firstName" [(ngModel)]="firstName" name="firstName" />
+  <button type="submit" [disabled]="loading">Edit</button>
+</form>
+
+@if (loading) {
+  <strong>Loading ...</strong>
+}

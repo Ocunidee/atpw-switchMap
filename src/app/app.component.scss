@@ -1,0 +1,16 @@
+form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 36px;
+  align-items: start;
+}
+
+dt, label {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+dd {
+  margin-left: 8px;
+  margin-bottom: 0.5rem;
+}
