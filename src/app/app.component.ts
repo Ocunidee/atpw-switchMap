@@ -1,6 +1,6 @@
 import { Component, model, OnInit, signal } from '@angular/core'
 import { User, UserService } from './user.service'
-import { finalize, Observable } from 'rxjs'
+import { finalize } from 'rxjs'
 import { FormsModule } from '@angular/forms'
 
 @Component({
@@ -18,22 +18,19 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadUser()
-      .subscribe(user => this.user.set(user))
   }
 
-  editUser() {
+  editUser(): void {
+    this.loading.set(true)
+    this.userService.edit(this.firstName())
+      .subscribe({ next: () => this.loadUser() }) // DO NOT DO THIS EVER (subscribe in subscribe) ;)
+  }
+
+  private loadUser(): void {
     this.loading.set(true)
     this.userService
-      .edit(this.firstName())
-      .pipe(/*TODO*/) // Compose the observable returned by the edit method with the one returned by loadUser()
-      .subscribe(/*TODO*/) // Then subscribe to the result, save it and empty the input
-  }
-
-  private loadUser(): Observable<User> {
-    this.loading.set(true)
-
-    return this.userService
       .details()
       .pipe(finalize(() => this.loading.set(false)))
+      .subscribe({ next: user => this.user.set(user) })
   }
 }
