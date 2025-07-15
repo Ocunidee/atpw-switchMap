@@ -1,11 +1,11 @@
 <h2>User details</h2>
 <dl>
   <dt>First name</dt>
-  <dd>{{user?.firstName}}</dd>
+  <dd>{{user()?.firstName}}</dd>
   <dt>Last name</dt>
-  <dd>{{user?.lastName}}</dd>
+  <dd>{{user()?.lastName}}</dd>
   <dt>Email address</dt>
-  <dd>{{user?.email}}</dd>
+  <dd>{{user()?.email}}</dd>
 </dl>
 <form (submit)="editUser()">
   <label for="firstName">First name</label>
@@ -13,6 +13,6 @@
   <button type="submit" [disabled]="loading">Edit</button>
 </form>
 
-@if (loading) {
+@if (loading()) {
   <strong>Loading ...</strong>
 }
