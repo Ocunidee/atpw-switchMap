@@ -10,7 +10,7 @@
 <form (submit)="editUser()">
   <label for="firstName">First name</label>
   <input id="firstName" [(ngModel)]="firstName" name="firstName" />
-  <button type="submit" [disabled]="loading">Edit</button>
+  <button type="submit" [disabled]="loading()">Edit</button>
 </form>
 
 @if (loading()) {

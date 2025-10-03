@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms'
 })
 export class AppComponent implements OnInit {
   user = signal<User | undefined>(undefined)
-  firstName = model('')
+  firstName = signal('')
   loading = signal(false)
 
   constructor(private userService: UserService) {}
